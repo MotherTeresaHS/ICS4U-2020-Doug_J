@@ -1,5 +1,5 @@
 /*
-* This class creates a bicycle which is a type of vehicle.
+* This class creates a ship object which holds methods for the other types of ships.
 *
 * @author  Douglass Jeffrey
 * @version 1.0
@@ -24,23 +24,23 @@ public class Ships {
   int positionY5;
 
   /**
-   * Setting field values with a constructor. 
+   * Sets hits on the ships and modifies their fields.
    */
-  public Ships() {
-  }
-  
-  public String setHit (int attackY, int attackX, String shipType) {
+  public String setHit (int attackY, int attackX, String shipType, String userVal) {
     shipHealth += -1;
     shotSegments += 1;
-    String shootMessage = "You hit a " + shipType + ". It has " + shipHealth + " health remaining.";
+    String shootMessage = userVal + " hit a " + shipType + ". It has " + shipHealth + " health remaining.";
 
     if (shotSegments == shipSize && shipHealth == 0) {
-      shootMessage = shootMessage + "\n\nYou sunk the " + shipType + "!";
+      shootMessage = shootMessage + "\n\n" + userVal + " sunk the " + shipType + "!";
     }
 
     return (shootMessage);
   }
   
+  /**
+   * Assigns the positions of the ships at the beginning of the game.
+   */
   public String assignPosition(int yVal1, int xVal1, int yVal2, int xVal2, int yVal3, int xVal3, int yVal4, int xVal4, int yVal5, int xVal5) {
 
     positionX1 = xVal1;
@@ -57,6 +57,9 @@ public class Ships {
     return "success";
   }
   
+  /**
+   * Checks ship health to determine if it is destroyed or not.
+   */
   public int healthcheck() {
     return (shipHealth);
   }

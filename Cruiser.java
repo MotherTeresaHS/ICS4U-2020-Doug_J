@@ -1,5 +1,5 @@
 /*
-* This class creates a bicycle which is a type of vehicle.
+* This class creates a Cruiser which is a type of Ship.
 *
 * @author  Douglass Jeffrey
 * @version 1.0
@@ -7,7 +7,6 @@
 */
 
 public class Cruiser extends Ships {
-  // Initializing fields
 
   /**
    * Setting field values with a constructor. 

@@ -1,5 +1,5 @@
 /*
-* This class creates a truck which is a type of vehicle.
+* This class creates a map object and its methods.
 *
 * @author  Douglass Jeffrey
 * @version 1.0
@@ -9,7 +9,7 @@
 public class Map {
   // Initializing fields
   
-    // Initializing ships 
+    // Initializing ships
     Ships ships = new Ships();
     
     Carrier carrier = new Carrier();
@@ -43,6 +43,11 @@ public class Map {
     }
   }
   
+  
+  /**
+   * lengthy process to generate the locations of the ships, as well as make
+   * sure that they do not overlap or go out of bounds of the map.
+   */
   public String generateMap() {
     
     // set variables needed to transmit information about the fleet location
@@ -69,7 +74,8 @@ public class Map {
         navyMap[randomY][randomX] = "carrier";
         pointX1 = randomX;
         pointY1 = randomY;
-        System.out.println("Carrier" + (pointX1 + 1) + ", " + (pointY1 + 1));
+        // debug print statement to show location of ship (should be commented)
+        //System.out.println("Carrier" + (pointX1 + 1) + ", " + (pointY1 + 1));
         
         // try left if 1
         if (directionCheck == 1 && navyMap[randomY][randomX + 1].equals("-") && navyMap[randomY][randomX + 2].equals("-") && navyMap[randomY][randomX + 3].equals("-") && navyMap[randomY][randomX + 4].equals("-")) {
@@ -151,7 +157,7 @@ public class Map {
           
           carrier.assignPosition(pointX1, pointY1, pointX2, pointY2, pointX3, pointY3, pointX4, pointY4, pointX5, pointY5);
         
-          
+        // reset the location back to a blank space if nothing works
         } else {
           navyMap[randomY][randomX] = "-";
         }
@@ -179,9 +185,11 @@ public class Map {
           navyMap[randomY][randomX] = "battleship";
           pointX1 = randomX;
           pointY1 = randomY;
-          System.out.println("Battleship" + (pointX1 + 1) + ", " + (pointY1 + 1));
+          // debug print statement to show location of ship (should be commented)
+          // System.out.println("Battleship" + (pointX1 + 1) + ", " + (pointY1 + 1));
         } else {
-          System.out.println("battleship landing collision");
+          // debug print statement to initial location placing error (should be commented)
+          // System.out.println("battleship landing collision");
           continue;
         }
         
@@ -255,7 +263,8 @@ public class Map {
           
         } else {
           navyMap[randomY][randomX] = "-";
-          System.out.println("battleship collision");
+          // debug print statement to show if collision happens (should be commented)
+          // System.out.println("battleship collision");
         }
         
       // catch if the battleship is placed out of bounds
@@ -279,9 +288,10 @@ public class Map {
           navyMap[randomY][randomX] = "cruiser";
           pointX1 = randomX;
           pointY1 = randomY;
-          System.out.println("Cruiser" + (pointX1 + 1) + ", " + (pointY1 + 1));
+          // debug print statement to show location of ship (should be commented)
+          // System.out.println("Cruiser" + (pointX1 + 1) + ", " + (pointY1 + 1));
         } else {
-          System.out.println("Cruiser landing Collision");
+          // System.out.println("Cruiser landing Collision");
           continue;
         }
         
@@ -339,7 +349,8 @@ public class Map {
           
         } else {
           navyMap[randomY][randomX] = "-";
-          System.out.println("cruiser collision");
+          // debug print statement to show if collision happens (should be commented)
+          // System.out.println("cruiser collision");
         }
       
       // catch if the cruiser is placed out of bounds
@@ -352,7 +363,7 @@ public class Map {
     
     placementCheck = false;
     
-    // enter while loop to place Cruiser (3 size ship)
+    // enter while loop to place Sub (3 size ship)
     while (placementCheck == false) {
 
       int randomY = (int)(Math.random() * (9 - 0 + 1) + 0);
@@ -364,9 +375,10 @@ public class Map {
           navyMap[randomY][randomX] = "sub";
           pointX1 = randomX;
           pointY1 = randomY;
-          System.out.println("Submarine" + (pointX1 + 1) + ", " + (pointY1 + 1));
+          // debug print statement to show location of ship (should be commented)
+          // System.out.println("Submarine" + (pointX1 + 1) + ", " + (pointY1 + 1));
         } else {
-          System.out.println("Submarine landing Collision");
+          // System.out.println("Submarine landing Collision");
           continue;
         }
         
@@ -421,9 +433,11 @@ public class Map {
           
           sub.assignPosition(pointX1, pointY1, pointX2, pointY2, pointX3, pointY3, -1, -1, -1, -1);
           placementCheck = true;
+          
         } else {
           navyMap[randomY][randomX] = "-";
-          System.out.println("sub collision");
+          // debug print statement to show if collision happens (should be commented)
+          // System.out.println("sub collision");
         }
       
       // catch if the sub is placed out of bounds
@@ -448,9 +462,10 @@ public class Map {
           navyMap[randomY][randomX] = "destroyer";
           pointX1 = randomX;
           pointY1 = randomY;
-          System.out.println("Destroyer" + (pointX1 + 1) + ", " + (pointY1 + 1));
+          // debug print statement to show location of ship (should be commented)
+          // System.out.println("Destroyer" + (pointX1 + 1) + ", " + (pointY1 + 1));
         } else {
-          System.out.println("Destroyer landing Collision");
+          // System.out.println("Destroyer landing Collision");
           continue;
         }
         
@@ -492,7 +507,8 @@ public class Map {
 
         } else {
           navyMap[randomY][randomX] = "-";
-          System.out.println("destroyer collision");
+          // debug print statement to show if collision happens (should be commented)
+          // System.out.println("destroyer collision");
         }
       
       // catch if the destroyer is placed out of bounds
@@ -521,7 +537,7 @@ public class Map {
       }
       
       for(int countTwo = 0; countTwo < 10; countTwo++) {
-        atMapString = atMapString + ("| " + this.attackMap[countOne][countTwo] + " |");
+        atMapString = atMapString + ("| " + attackMap[countOne][countTwo] + " |");
         if (countTwo == 9) {
           atMapString = atMapString + ("\n");
           
@@ -531,7 +547,109 @@ public class Map {
     }
     return(atMapString);
   }
+  
+  
+  /**
+   * prints out player board
+   */
+  public String printNavyMap() {
+    String atMapString = "     A    B    C    D    E    F    G    H    I    J \n   -------------------------------------------------- \n";
+    
+    // Enter a nested for loop to print out the map in proper format
+    for(int countOne = 0; countOne < 10; countOne++) {
+      
+      if (countOne != 9) {
+        atMapString = atMapString + (countOne + 1) + "  ";
+      } else {
+        atMapString = atMapString + (countOne + 1) + " ";
+      }
+      
+      for(int countTwo = 0; countTwo < 10; countTwo++) {
+        
+        if (navyMap[countOne][countTwo].equals("carrier")) {
+          atMapString = atMapString + ("| " + "\033[0;96m" + "█" + "\u001B[0m" + " |");
+          
+        } else if (navyMap[countOne][countTwo].equals("battleship")) {
+          atMapString = atMapString + ("| " + "\033[0;95m" + "█" + "\u001B[0m" + " |");
+          
+        } else if (navyMap[countOne][countTwo].equals("cruiser")) {
+          atMapString = atMapString + ("| " + "\033[0;94m" + "█" + "\u001B[0m" + " |");
+        
+        } else if (navyMap[countOne][countTwo].equals("sub")) {
+          atMapString = atMapString + ("| " + "\033[0;93m" + "█" + "\u001B[0m" + " |");
+          
+        } else if (navyMap[countOne][countTwo].equals("destroyer")) {
+          atMapString = atMapString + ("| " + "\033[0;92m" + "█" + "\u001B[0m" + " |");
+        
+        } else {
+          atMapString = atMapString + ("| " + navyMap[countOne][countTwo] + " |");
+        }
+        
+        if (countTwo == 9) {
+          atMapString = atMapString + ("\n");
+          
+        }
+      }
+      atMapString = atMapString + "   -------------------------------------------------- \n";
+    }
+    return(atMapString);
+  }
+  
+  /**
+   * Calculates the bots attacks (to be improved)
+   */
+  public int [] botAttack() {
+    int randomY = (int)(Math.random() * (9 - 0 + 1) + 0);
+    int randomX = (int)(Math.random() * (9 - 0 + 1) + 0);
+    
+    int [] botAttack = new int[2];
+    botAttack [0] = randomY;
+    botAttack [1] = randomX;
+    
+    String atString = "";
+    
+    switch (randomX) {
+      case 0:
+        atString = "A";
+        break;
+      case 1:
+        atString = "B";
+        break;
+      case 2:
+        atString = "C";
+        break;
+      case 3:
+        atString = "D";
+        break;
+      case 4:
+        atString = "E";
+        break;
+      case 5:
+        atString = "F";
+        break;
+      case 6:
+        atString = "G";
+        break;
+      case 7:
+        atString = "H";
+        break;
+      case 8:
+        atString = "I";
+        break;
+      case 9:
+        atString = "J";
+        break;
+    }
+    
+    System.out.println("\nComputer attacked at " + atString + ", " + (randomY + 1));
+    
+    return(botAttack);
+    
+  }
 
+  /**
+   * parses letter inputs into numbers
+   */
   public int parseLetter(String letterAtX) {
     int numeralAtX = -1;
     switch (letterAtX) {
@@ -569,7 +687,10 @@ public class Map {
     return (numeralAtX);
   }
   
-  public String checkNavyMap(int attackY, int attackX) {
+  /**
+   * Checks if there is a hit or miss
+   */
+  public String checkNavyMap(int attackY, int attackX, String userVal) {
     
     //check if the array at attackX,attackY location isnt water or already hit
     if (navyMap[attackY][attackX] == "-") {
@@ -577,35 +698,35 @@ public class Map {
       return("MISS");
       
     } else if (navyMap[attackY][attackX] == "X") {
-      return("You already hit that segment! Attack somewhere else!");
+      return((userVal + " hit an already destroyed segment."));
       
     } else {
       if (navyMap[attackY][attackX] == "carrier") {
-        String shootMessage = carrier.setHit(attackY, attackX, "Carrier");
+        String shootMessage = carrier.setHit(attackY, attackX, "Carrier", userVal);
         hitMark(attackY, attackX);
         return (shootMessage);
-      } 
+      }
       
       if (navyMap[attackY][attackX] == "battleship") {
-        String shootMessage = battleship.setHit(attackY, attackX, "Battleship");
+        String shootMessage = battleship.setHit(attackY, attackX, "Battleship", userVal);
         hitMark(attackY, attackX);
         return (shootMessage);
       }
       
       if (navyMap[attackY][attackX] == "cruiser") {
-        String shootMessage = cruiser.setHit(attackY, attackX, "Cruiser");
+        String shootMessage = cruiser.setHit(attackY, attackX, "Cruiser", userVal);
         hitMark(attackY, attackX);
         return (shootMessage);
       }
       
       if (navyMap[attackY][attackX] == "sub") {
-        String shootMessage = sub.setHit(attackY, attackX, "Submarine");
+        String shootMessage = sub.setHit(attackY, attackX, "Submarine", userVal);
         hitMark(attackY, attackX);
         return (shootMessage);
       }
       
       if (navyMap[attackY][attackX] == "destroyer") {
-        String shootMessage = destroyer.setHit(attackY, attackX, "Destroyer");
+        String shootMessage = destroyer.setHit(attackY, attackX, "Destroyer", userVal);
         hitMark(attackY, attackX);
         return (shootMessage);
       }
@@ -624,16 +745,20 @@ public class Map {
     }
   }
   
+  /**
+   * marks misses on player attack map
+   */
   public void missMark(int attackY, int attackX) {
     
     attackMap[attackY][attackX] = "O";
   }
   
+  /**
+   * marks hits on player attack map
+   */
   public void hitMark(int attackY, int attackX) {
     
     attackMap[attackY][attackX] = "X";
     navyMap[attackY][attackX] = "X";
   }
-  
-  
 }

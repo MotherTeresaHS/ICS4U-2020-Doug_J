@@ -1,5 +1,5 @@
 /*
-* This class creates a bicycle which is a type of vehicle.
+* This class creates a Battleship which is a type of Ship.
 *
 * @author  Douglass Jeffrey
 * @version 1.0
@@ -7,7 +7,6 @@
 */
 
 public class Battleship extends Ships {
-  // Initializing fields
 
   /**
    * Setting field values with a constructor. 
